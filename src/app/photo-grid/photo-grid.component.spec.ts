@@ -11,7 +11,7 @@ describe('PhotoGridComponent', () => {
       declarations: [ PhotoGridComponent ]
     })
     .compileComponents();
-  }));
+  }));    
 
   beforeEach(() => {
     fixture = TestBed.createComponent(PhotoGridComponent);

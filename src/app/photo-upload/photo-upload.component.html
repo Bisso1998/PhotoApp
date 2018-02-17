@@ -1,3 +1,10 @@
 <p>
   photo-upload works!
 </p>
+
+  <label for="imageUpload">Image Upload</label>
+  <input type="file" (change)="fileEvent($event)" name="imageUpload" id="imageUpload"/>
+<!--   <img *ngIf="show" src="https://loading.io/spinners/eclipse/lg.ring-loading-gif.gif" >
+ -->  <div [style.display]="show ? 'block': 'none'">
+  	Uploading...
+  </div>s

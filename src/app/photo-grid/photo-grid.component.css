@@ -1,0 +1,16 @@
+.imageCard {
+	background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 150px;
+  width: 150px;
+  border-radius: 5px;
+}
+.largeImage {
+	height: 350px;
+	width: 350px;
+
+}
+.repeatThis {
+	margin: 5px;
+}
