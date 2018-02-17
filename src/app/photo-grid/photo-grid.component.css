@@ -2,9 +2,11 @@
 	background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  height: 150px;
-  width: 150px;
+  height: 200px;
+  width: 200px;
   border-radius: 5px;
+  margin-left: 30px;
+  margin-bottom: 10px;
 }
 .largeImage {
 	height: 350px;
@@ -12,5 +14,4 @@
 
 }
 .repeatThis {
-	margin: 5px;
 }

@@ -10,11 +10,14 @@ export class PhotoGridComponent implements OnInit {
 
   constructor(private modalService: NgbModal) { }
     closeResult: string;
+    value: any = 2;
 
 
   ngOnInit() {
   }
     open(content) {
+    console.log("You content is : " + content);
+
     this.modalService.open(content);
   }
 }

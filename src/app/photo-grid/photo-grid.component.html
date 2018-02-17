@@ -3,17 +3,26 @@
 <p>
   photo-grid works!
 </p>
-<div class="row">
-	<div class="imageCard"  (click)="open(content)" style="background-image: url(https://www.trickscity.com/wp-content/uploads/2017/09/cute-profile-pics-for-whatsapp-images.png);">
+<div class="row" >
+	<div class="imageCard" *ngFor = "let id of ['http://via.placeholder.com/140x200','http://via.placeholder.com/140x200','http://i.dailymail.co.uk/i/pix/2016/05/23/22/348B85E200000578-3605456-image-m-37_1464040594420.jpg','http://i.dailymail.co.uk/i/pix/2016/05/23/22/348B85E200000578-3605456-image-m-37_1464040594420.jpg','http://i.dailymail.co.uk/i/pix/2016/05/23/22/348B85E200000578-3605456-image-m-37_1464040594420.jpg','http://i.dailymail.co.uk/i/pix/2016/05/23/22/348B85E200000578-3605456-image-m-37_1464040594420.jpg','http://i.dailymail.co.uk/i/pix/2016/05/23/22/348B85E200000578-3605456-image-m-37_1464040594420.jpg','http://i.dailymail.co.uk/i/pix/2016/05/23/22/348B85E200000578-3605456-image-m-37_1464040594420.jpg','http://i.dailymail.co.uk/i/pix/2016/05/23/22/348B85E200000578-3605456-image-m-37_1464040594420.jpg','http://i.dailymail.co.uk/i/pix/2016/05/23/22/348B85E200000578-3605456-image-m-37_1464040594420.jpg','http://i.dailymail.co.uk/i/pix/2016/05/23/22/348B85E200000578-3605456-image-m-37_1464040594420.jpg','http://i.dailymail.co.uk/i/pix/2016/05/23/22/348B85E200000578-3605456-image-m-37_1464040594420.jpg','http://i.dailymail.co.uk/i/pix/2016/05/23/22/348B85E200000578-3605456-image-m-37_1464040594420.jpg']; let i=index">
+		<div class="imageCard"  (click)="open(i)"  placement="top" ngbTooltip={{id}}>
+			<img src="{{id}}" class="imageCard">
 	</div>
-</div>
-<ng-template #content let-c="close" let-d="dismiss">
+
+		<ng-template #i let-c="close" let-d="dismiss">
+
   <div class="modal-body">
-  	<div class="imageCard largeImage" style="background-image: url(https://www.trickscity.com/wp-content/uploads/2017/09/cute-profile-pics-for-whatsapp-images.png);">
+  	<div class="imageCard largeImage" >
+			<img src="{{id}}" class="imageCard">
+			<h6>{{id}}</h6>
 	</div>
   </div>
   <div class="modal-footer">
     <button type="button" class="btn btn-outline-dark" (click)="c('Close click')">Close</button>
   </div>
 </ng-template>
+	</div>
+
 </div>
+</div>
+
