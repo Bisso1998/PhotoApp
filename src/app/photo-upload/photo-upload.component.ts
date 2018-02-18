@@ -1,5 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import * as AWS from 'aws-sdk';
+
+
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/operator/distinctUntilChanged';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest,HttpParams } from '@angular/common/http';
+import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
+
+
+
 @Component({
   selector: 'app-photo-upload',
   templateUrl: './photo-upload.component.html',
@@ -9,12 +22,58 @@ import * as AWS from 'aws-sdk';
 export class PhotoUploadComponent implements OnInit {
 show : boolean;
 tmp:any;
-  constructor() {
+cookieValue :  any;
+getFileName:any;
+JWT:any;
+req:any;
+
+  constructor(public http: HttpClient, private cookieService: CookieService) {
 }
 image:any;
   ngOnInit() {
+
+this.cookieValue = this.cookieService.get('Test');
+      console.log("Value of gloabl cookiexxx: " + this.cookieValue);
+    this.JWT = this.cookieValue;
+    
   }
+  uploadImage()
+  {
+    console.log(this.image);
+    console.log("JWT is: " + this.JWT);
+
+
+
+      const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type': 'application/json',
+     'Authorization': 'JWT ' + this.JWT,
+
+  })
+};
+var body = {
+
+  "imageUrl" : "https://image-catalog.s3.amazonaws.com/" + this.image,
+
+};
+console.log(body);
+this.req = this.http.post('http://127.0.0.1:5000/uploadImage', JSON.stringify(body), httpOptions)
+.subscribe  (
+  res => {
+    // do shit with response  
+  console.log("API CALLED");
+  console.log(res);
+
+
+  },
+  err => {
+    console.log("Error Occured in LOGIN APi ");
+  })
+  }
+ 
   fileEvent(fileInput: any) {
+
+
   console.log("Fired");
   const AWSService = AWS;
   const region = 'us-east-1';
@@ -35,6 +94,7 @@ image:any;
   });
 //I store this in a variable for retrieval later
   this.image = file.name;
+
   console.log("Name of Image: " + this.image);
     this.show = true; 
     
@@ -44,6 +104,29 @@ image:any;
    }
    else {
    	console.log("Done");
+
+     this.getFileName = file.name
+
+ // this.cookieValue = this.cookieService.get('Test');
+ //      console.log("Value of gloabl cookie: " + this.cookieValue);
+
+ //      var JWT = this.cookieValue;
+ //      console.log("JWT is: " + JWT);
+
+// console.log("Value of REAL JWT is : " + JWT + " and image name is: " + file.name);
+// var fileName = file.name;
+// console.log("The value of fileName: " + fileName);
+
+
+
+
+
+
+
+
+
+
+
     
      this.show = false;
  

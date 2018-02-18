@@ -8,17 +8,16 @@
 <br><br>
 <div class="row" >
 
-	<div class="imageCard" *ngFor = "let id of ['http://via.placeholder.com/140x200','http://via.placeholder.com/140x200','http://i.dailymail.co.uk/i/pix/2016/05/23/22/348B85E200000578-3605456-image-m-37_1464040594420.jpg','http://i.dailymail.co.uk/i/pix/2016/05/23/22/348B85E200000578-3605456-image-m-37_1464040594420.jpg','http://i.dailymail.co.uk/i/pix/2016/05/23/22/348B85E200000578-3605456-image-m-37_1464040594420.jpg','http://i.dailymail.co.uk/i/pix/2016/05/23/22/348B85E200000578-3605456-image-m-37_1464040594420.jpg','http://i.dailymail.co.uk/i/pix/2016/05/23/22/348B85E200000578-3605456-image-m-37_1464040594420.jpg','http://via.placeholder.com/140x200','http://i.dailymail.co.uk/i/pix/2016/05/23/22/348B85E200000578-3605456-image-m-37_1464040594420.jpg','http://i.dailymail.co.uk/i/pix/2016/05/23/22/348B85E200000578-3605456-image-m-37_1464040594420.jpg','http://i.dailymail.co.uk/i/pix/2016/05/23/22/348B85E200000578-3605456-image-m-37_1464040594420.jpg','http://i.dailymail.co.uk/i/pix/2016/05/23/22/348B85E200000578-3605456-image-m-37_1464040594420.jpg'] |   paginate: { itemsPerPage: 8, currentPage: p }; let i=index">
-		<div class="imageCard"  (click)="open(i)"  placement="top" ngbTooltip={{id}}>
-			<img src="{{id}}" class="imageCard">
+	<div class="imageCard" *ngFor = "let id of images |   paginate: { itemsPerPage: 8, currentPage: p }; let i=index">
+		<div class="imageCard"  (click)="open(i)"  placement="top" ngbTooltip="{{id['created-at']}} ">
+			<img src="{{id.thumbnailUrl}}" class="imageCard">
 	</div>
 
 		<ng-template #i let-c="close" let-d="dismiss">
 
   <div class="modal-body">
   	<div class="imageCard largeImage" >
-			<img src="{{id}}" class="imageCard">
-			<h6>{{id}}</h6>
+			<img src="{{id.imageUrl}}" class="imageCard--content" >
 			<input type="text" value="{{myModel}}" style="display: none;">
 			<p>
 				<input type="text" name="" [(ngModel)]="myModel" >
@@ -33,11 +32,10 @@
 </ng-template>
 	</div>
 	<br><br><br>
+
 	<div style="display: block;">
 	      <pagination-controls (pageChange)="p = $event" style= "display: block"></pagination-controls>
 			
 	</div>
-
 </div>
 </div>
-

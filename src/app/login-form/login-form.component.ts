@@ -60,7 +60,7 @@ this.req = this.http.post('http://127.0.0.1:5000/auth', JSON.stringify(body), ht
     	this.cookieValue = this.cookieService.get('Test');
 		// this.showHide = false;
 		// console.log("value of showHide " + this.showHide);
-		 this.router.navigate(["photo-grid"]);
+		 this.router.navigate(["photo-upload"]);
 		 console.log("Cookie Value is: " + this.cookieValue);
 
 
