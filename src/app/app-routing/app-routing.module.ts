@@ -2,6 +2,10 @@
     import { RouterModule, Routes } from '@angular/router';
     import { PhotoGridComponent } from '../photo-grid/photo-grid.component';
 import { PhotoUploadComponent } from '../photo-upload/photo-upload.component';
+import { LoginFormComponent } from '../login-form/login-form.component';
+
+
+
 
     const routes: Routes = [
         {
@@ -11,6 +15,11 @@ import { PhotoUploadComponent } from '../photo-upload/photo-upload.component';
          {
             path: 'photo-upload',
             component: PhotoUploadComponent,
+        },
+
+         {
+            path: 'login',
+            component: LoginFormComponent,
         },
     ];
 
